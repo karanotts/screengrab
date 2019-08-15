@@ -21,8 +21,9 @@ def upload_screenshot():
                 view.write(requests.get(url).content)
                 view.close()
 
-            basedir = os.path.abspath(os.path.dirname(__file__))
-            uploads = os.path.join(basedir, 'uploads/')
+            basedir = os.path.dirname(api.root_path)
+            print(basedir)
+            uploads = os.path.join(basedir, 'static/uploads/')
             if not os.path.isdir(uploads):
                 os.mkdir(uploads)
             
@@ -52,7 +53,7 @@ def upload_screenshot():
 
         check_response = requests.get(source_url)
         if not check_response:
-            return "<h1>URL NOT FOUND</h1>" # redirect(url_for("url_not_found"))
+            return "<h1>URL NOT FOUND</h1>"
         else:
             download_file(source_url)
 

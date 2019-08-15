@@ -7,40 +7,23 @@
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Previous</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Next</a>
-                </li>
-            </ul>
-        </div>
     </div>
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-10" >
             <form method="POST" action="">
-                <div class="form-row">
-                    <div class="control">
-                        <label for="source_url" class="label my-4">To create a screenshot, please provide url to create
-                            a screenshot.<br />The required format is: https://example.com | http://www.example.co.uk </label>
+                    <div>
+                        <label for="source_url" class="label my-8" style="padding: 1rem 0 1rem 0">To create a screenshot, please provide url to create a screenshot.<br />
+                        <small>The required format is: https://example.com | http://www.example.co.uk</small></label>
                     </div>
-                    <div class="col-auto"><input class="form-control mb-2" type="text" name="source_url"
-                            placeholder="Source url" size="50%" pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$" title="https://example.com | https://www.example.co.uk" required>
-                        <button type="submit" class="btn btn-primary btn-md mt-0">Submit</button>
+                    <div>
+                        <input class="" type="text" name="source_url"  placeholder="Source url" size="50%" pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$" title="https://example.com | https://www.example.co.uk" required>
+                        <button style="margin: 1rem 0 1rem 0" type="submit" class="btn btn-secondary btn-sm mt-0">Submit</button>
                     </div>
-                </div>
             </form>
         </div>
-        <div>
+        <div style="padding: 1rem 0 1rem 0; width: 100%; color:gray">
             {% for message in get_flashed_messages() %}
                 {{ message }}
             {% endfor %}
