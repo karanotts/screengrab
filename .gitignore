@@ -1,0 +1,8 @@
+.vscode/
+.env
+.flaskenv
+*.pc
+*.pyc
+*.pyo
+*__pycache__/
+*venv/
