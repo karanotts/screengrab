@@ -26,24 +26,25 @@
 </nav>
 <div class="container">
     <div class="row">
-
         <div class="col-md-10">
             <form method="POST" action="">
                 <div class="form-row">
                     <div class="control">
                         <label for="source_url" class="label my-4">To create a screenshot, please provide url to create
-                            a screenshot.<br />The required format is: "https://google.com"</label>
+                            a screenshot.<br />The required format is: https://example.com | http://www.example.co.uk </label>
                     </div>
-
-
                     <div class="col-auto"><input class="form-control mb-2" type="text" name="source_url"
-                            placeholder="Source url" size="50%" type="submit">
+                            placeholder="Source url" size="50%" pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$" title="https://example.com | https://www.example.co.uk" required>
                         <button type="submit" class="btn btn-primary btn-md mt-0">Submit</button>
                     </div>
                 </div>
             </form>
         </div>
-
+        <div>
+            {% for message in get_flashed_messages() %}
+                {{ message }}
+            {% endfor %}
+        </div>
     </div>
 </div>
 </div>

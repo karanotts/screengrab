@@ -1,0 +1,14 @@
+@api.route('/screenshots', methods=['GET'])
+def get_screenshots():
+
+    screenshots = Screenshot.query.all()
+
+    return jsonify({'screenshots' : [screenshot.to_json() for screenshot in screenshots]})
+
+
+@api.route('/screenshots/<int:id>', methods=['GET'])
+def get_screenshot(id):
+
+    screenshot = Screenshot.query.get_or_404(id)
+
+    return render_template("screenshot.html", screenshot=screenshot.to_json())
