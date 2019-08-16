@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, send_file, json
 import requests
 import re
 import os
+import json
 from datetime import datetime
 from screengrab.extensions import db
 from screengrab.models import Screenshot
@@ -45,7 +46,7 @@ def upload_screenshot():
             screenshot = Screenshot(source_url=source_url, created_on=now, desktop_view=desktop_image_name, mobile_view=mobile_image_name)
             db.session.add(screenshot)
  
-            message = "Screenshots of {} have been uploaded".format(source_url)
+            message = "Screenshots of {} have been uploaded to {}".format(source_url,desktop_image_name)
             flash(message)
 
         source_url = request.form["source_url"]
@@ -64,9 +65,9 @@ def upload_screenshot():
 @api.route('/screenshots', methods=['GET'])
 def get_screenshots():
 
-    screenshots = Screenshot.query.all()
-
-    return jsonify({'screenshots' : [screenshot.to_json() for screenshot in screenshots]})
+    screenshots = [screenshot.to_json() for screenshot in Screenshot.query.all()]
+    # screenshots = json.dumps(screenshots, sort_keys=False, indent=2)
+    return render_template("screenshots.html", screenshots=screenshots)
 
 @api.route('/screenshots/<int:id>', methods=['GET'])
 def get_screenshot(id):
