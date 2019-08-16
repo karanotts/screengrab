@@ -12,8 +12,6 @@ class FlaskBasicTestCase(unittest.TestCase):
         self.app = create_app()
         self.app_context = self.app.app_context()
         self.app_context.push()
-        self.app.config['TESTING'] = True
-        self.app.config['CSRF_ENABLED'] = False
         self.app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
         db.init_app(self.app)
         with self.app.app_context():

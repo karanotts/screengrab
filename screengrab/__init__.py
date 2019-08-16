@@ -3,9 +3,10 @@ from flask import Flask
 import os
 
 from .extensions import db
-from .commands import create_db
+from .commands import create_db, test_query
 from .views.api import api
 from .views.main import main
+
 
 def create_app(config_file='settings.py'):
     app = Flask(__name__)
@@ -18,5 +19,6 @@ def create_app(config_file='settings.py'):
     app.register_blueprint(api, url_prefix='/api/v1')
 
     app.cli.add_command(create_db)
+    app.cli.add_command(test_query)
 
     return app

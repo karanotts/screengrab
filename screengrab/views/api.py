@@ -22,7 +22,6 @@ def upload_screenshot():
                 view.close()
 
             basedir = os.path.dirname(api.root_path)
-            print(basedir)
             uploads = os.path.join(basedir, 'static/uploads/')
             if not os.path.isdir(uploads):
                 os.mkdir(uploads)
@@ -69,10 +68,24 @@ def get_screenshots():
 
     return jsonify({'screenshots' : [screenshot.to_json() for screenshot in screenshots]})
 
-
 @api.route('/screenshots/<int:id>', methods=['GET'])
 def get_screenshot(id):
 
     screenshot = Screenshot.query.get_or_404(id)
 
     return render_template("screenshot.html", screenshot=screenshot.to_json())
+
+
+@api.route('/', methods=['GET'])
+def get_api():
+
+    return """
+    <!DOCTYPE html>
+    <html>
+        <head><title>SCREENGRAB API</title></head>
+    <body>
+        <h1>Screengrab API</h1>
+        <p>Documentation required.</p>
+    </body>
+    </html>
+    """
