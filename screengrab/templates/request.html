@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">Screenshots API</a>
-        <span class="pull-right"><a class="text-white" href="{{ url_for('api.upload_screenshot') }}">Create a screenshot</a><span class="text-white"> | </span><span><a class="text-white" href="{{ url_for('api.get_screenshots') }}">List all saved screenshots</a></span>
+        <span class="pull-right"><a class="text-white" href="{{ url_for('main.upload_screenshot') }}">Create a screenshot</a><span class="text-white"> | </span><span><a class="text-white" href="{{ url_for('api.get_screenshots') }}">List all saved screenshots</a></span>
     </div>
 </nav>
 <div class="container">
@@ -15,7 +15,7 @@
                         <small>The required format is: https://example.com | http://www.example.co.uk</small></label>
                     </div>
                     <div>
-                        <input class="" type="text" name="source_url"  placeholder="Source url" size="50%" pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$" title="https://example.com | https://www.example.co.uk" required>
+                        <input class="" type="text" name="source_url"  placeholder="Source url" size="50%" pattern="^(http|https):\/\/[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+$" title="http://example.com | https://www.example.co.uk" required>
                         <button style="margin: 1rem 0 1rem 0" type="submit" class="btn btn-secondary btn-sm mt-0">Submit</button>
                     </div>
             </form>
