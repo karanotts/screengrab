@@ -8,10 +8,10 @@ from .views.api import api
 from .views.main import main
 
 
-def create_app(config_file='settings.py'):
-    app = Flask(__name__)
+def create_app():
+    app = Flask(__name__, instance_path='/')
 
-    app.config.from_pyfile(config_file)
+    app.config.from_object('config.Config')
 
     db.init_app(app)
 
