@@ -1,4 +1,4 @@
-import unittest, os
+import unittest, os, json
 from flask import current_app
 from screengrab import create_app
 from screengrab.extensions import db
@@ -27,16 +27,16 @@ class FlaskViewsTest(unittest.TestCase):
     def test_api(self):
         response = self.client.get('/api/v1/')
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('Documentation' in response.get_data(as_text=True))
+        self.assertTrue('API USAGE' in response.get_data(as_text=True))
 
     def test_api_screenshots(self):
 
         screenshot = Screenshot(
             id=123456789, 
-            source_url="source_url", 
+            source_url='source_url', 
             created_on=datetime(2012, 3, 12, 15, 12, 10), 
-            desktop_view="desktop_image_name", 
-            mobile_view="mobile_image_name"
+            desktop_view='desktop_image_name', 
+            mobile_view='mobile_image_name'
             )
         db.session.add(screenshot)
         db.session.commit()
@@ -44,3 +44,15 @@ class FlaskViewsTest(unittest.TestCase):
         response = self.client.get('/api/v1/screenshots/123456789')
         self.assertEqual(response.status_code, 200)
         self.assertTrue('mobile_image_name' in response.get_data(as_text=True))
+
+        response = self.client.post(
+            '/api/v1/screenshots',
+            content_type='application/json',
+            data=json.dumps({'source_url': 'https://wiggle.co.uk'}))
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.post(
+            '/api/v1/screenshots',
+            content_type='application/json',
+            data=json.dumps({'source_url': 'https://malformed-url'}))
+        self.assertEqual(response.status_code, 500)

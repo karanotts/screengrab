@@ -24,11 +24,14 @@ def post_screenshots():
 
     source_url = request.json['source_url']
 
-    check_response = requests.get(source_url)
-    if not check_response:
-        return "<h1>URL NOT FOUND</h1>"
-    else:
-        download_file(source_url)
+    try:
+        check_response = requests.get(source_url)
+    except requests.exceptions.ConnectionError:
+        raise Exception(
+            "Failed to establish connection to {}".format(source_url)
+        )
+
+    download_file(source_url)
 
     db.session.commit()
 
@@ -46,13 +49,4 @@ def get_screenshot(id):
 @api.route('/', methods=['GET'])
 def get_api():
 
-    return """
-    <!DOCTYPE html>
-    <html>
-        <head><title>SCREENGRAB API</title></head>
-    <body>
-        <h1>Screengrab API</h1>
-        <p>Documentation required.</p>
-    </body>
-    </html>
-    """
+    return render_template("api.html")
