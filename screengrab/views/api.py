@@ -35,8 +35,7 @@ def post_screenshots():
 
     db.session.commit()
 
-    return source_url #render_template("screenshots.html", screenshots=screenshots)
-
+    return jsonify(source_url), 201
 
 @api.route('/screenshots/<int:id>', methods=['GET'])
 def get_screenshot(id):
