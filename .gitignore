@@ -6,3 +6,7 @@
 *.pyo
 *__pycache__/
 *venv/
+
+*/static/uploads/*
+*/tests/test.db
+data.db

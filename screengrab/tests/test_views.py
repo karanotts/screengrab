@@ -22,7 +22,7 @@ class FlaskViewsTest(unittest.TestCase):
     def test_main_view(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('Main view' in response.get_data(as_text=True))
+        self.assertTrue('To create a screenshot' in response.get_data(as_text=True))
 
     def test_api(self):
         response = self.client.get('/api/v1/')
