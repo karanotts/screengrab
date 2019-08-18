@@ -1,5 +1,6 @@
 language: python
 sudo: required
+
 services:
   - docker
 
@@ -11,3 +12,17 @@ install:
 
 script: 
   - python -m unittest
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  app: "screengrab"
+  env: "screengrab-env"
+  bucket_name: "elasticbeanstalk-eu-west-1-screengrab"
+  bucket_path: "screengrab"
+  on:
+    repo: karanotts/screengrab
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"

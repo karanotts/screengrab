@@ -1,0 +1,1 @@
+web: flask create_db; flask translate compile; gunicorn screengrab:screengrab
