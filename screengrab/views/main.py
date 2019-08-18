@@ -15,9 +15,6 @@ def download_file(source_url):
         view.close()
 
     uploads = current_app.config['UPLOAD_FOLDER']
-
-    if not os.path.isdir(uploads):
-        os.mkdir(uploads)
     
     thum_url = 'https://image.thum.io/get/wait/15/png/'
 
@@ -29,16 +26,19 @@ def download_file(source_url):
     
     img_name = re.sub('^https?:\/\/', '', source_url)
 
-    desktop_image_name = '{}{}-desktop-{}.png'.format(uploads,img_name,timestamp)
-    mobile_image_name = '{}{}-mobile-{}.png'.format(uploads,img_name,timestamp)
+    desktop_image_name = '{}-desktop-{}.png'.format(img_name,timestamp)
+    mobile_image_name = '{}-mobile-{}.png'.format(img_name,timestamp)
 
-    save_binary_file(desktop_url, desktop_image_name)
-    save_binary_file(mobile_url, mobile_image_name)
+    desktop_image_location = '{}{}-desktop-{}.png'.format(uploads,img_name,timestamp)
+    mobile_image_location = '{}{}-mobile-{}.png'.format(uploads,img_name,timestamp)
+
+    save_binary_file(desktop_url, desktop_image_location)
+    save_binary_file(mobile_url, mobile_image_location)
 
     screenshot = Screenshot(source_url=source_url, created_on=now, desktop_view=desktop_image_name, mobile_view=mobile_image_name)
     db.session.add(screenshot)
 
-    message = 'Screenshots of {} have been uploaded to {}'.format(source_url,desktop_image_name)
+    message = 'Screenshots of {} have been uploaded to {}'.format(source_url,desktop_image_location)
     flash(message)
 
     return True
