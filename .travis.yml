@@ -7,7 +7,7 @@ before_install:
   - docker build -t karanotts/screengrab -f Dockerfile .
 
 install:
-  - pip install requirements.txt
+  - pip install --user requirements.txt
 
 script: 
   - python -m unittest
