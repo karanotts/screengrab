@@ -41,8 +41,9 @@ def post_screenshots():
 def get_screenshot(id):
 
     screenshot = Screenshot.query.get_or_404(id)
+    preview = screenshot.desktop_view
 
-    return render_template("screenshot.html", screenshot=screenshot.to_json())
+    return render_template("screenshot.html", screenshot=screenshot.to_json(), preview=preview)
 
 
 @api.route('/', methods=['GET'])

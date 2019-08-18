@@ -26,15 +26,14 @@
 
         <div class="col-md-12" style="margin-top:30px">
             <div class="row">
-              <div class="col-md-4 content-center">
-                <h2>Desktop view:</h2>
-                <h5>Dec 7, 2017</h5>
-                <div class=""><img src="{{ url_for('static', filename='uploads/' + image) }}" class="img80 img-responsive center" alt="Screenshot"></div>
+              <div class="col-md-7 content-center" >
+                <h4>Desktop view:</h4>
+                <div class=""><img src="{{ url_for('static', filename='uploads/' + desktop) }}" class="img-responsive" width="100%" alt="Screenshot"></div>
               </div>
+              <div class="col-md-1"></div>
               <div class="col-md-4 content-center">
-              <h2>Mobile view:</h2>
-                <h5>Sep 2, 2017</h5>
-                <div class=""><img src="{{ url_for('static', filename='uploads/' + image) }}" class="img80 img-responsive center" alt="Screenshot"></div>
+              <h4>Mobile view:</h4>
+                <div class=""><img src="{{ url_for('static', filename='uploads/' + mobile) }}" class="img-responsive" width="100%" alt="Screenshot"></div>
               </div>
             </div>
           </div>

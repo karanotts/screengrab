@@ -2,7 +2,7 @@
 {% block page_content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <form method="POST" action="">
                 <div>
                     <label for="source_url" class="label my-8" style="padding: 1rem 0 1rem 0">To create a screenshot,
@@ -17,6 +17,11 @@
                         class="btn btn-secondary btn-sm mt-0">Submit</button>
                 </div>
             </form>
+        </div>
+        <div style="padding: 1rem 0 1rem 0; width: 100%; color:gray">
+            {% for message in get_flashed_messages() %}
+                {{ message }}
+            {% endfor %}
         </div>
     </div>
 </div>

@@ -1,16 +1,15 @@
 {% extends 'layout.html' %}
 {% block page_content %}
+<div style="height:50px"></div>
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
-            <h2 class="my-4">Image Name
-            </h2>
+        <div class="col-md-12">
             <div class="card mb-4">
-                <img class="card-img-top" src="{{ image }}" alt="Card image cap">
                 <div class="card-body">
-                    <h4 class="card-title">Image Data</h4>
-                    <p class="card-text">{{ screenshot }}</p>
+                        <h4 class="card-title">Image Data</h4>
+                        <p class="card-text">{{ screenshot }}</p>
                 </div>
+                <img class="preview" src="{{ url_for('static', filename='uploads/' + preview) }}" class="img-responsive" alt="Card image cap">
             </div>
         </div>
     </div>
