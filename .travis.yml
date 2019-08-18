@@ -7,7 +7,7 @@ before_install:
   - docker build -t karanotts/screengrab -f Dockerfile .
 
 install:
-  - pip install flask
+  - pip install requirements.txt
 
 script: 
   - python -m unittest
