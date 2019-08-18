@@ -27,16 +27,21 @@ class FlaskBasicTestCase(unittest.TestCase):
         self.assertFalse(current_app is None)
 
     def test_to_json(self):
-        given = Screenshot(id=1, 
-            source_url="source_url", 
-            created_on=datetime(2012, 3, 12, 15, 12, 10), 
-            desktop_view="desktop_image_name", 
-            mobile_view="mobile_image_name")
-        expected = {
-            "id": 1, 
-            "source_url": "source_url", 
-            "created_on": "12-03-2012 15:12:10", 
-            "desktop_view": "desktop_image_name", 
-            "mobile_view": "mobile_image_name"
-        }
-        self.assertEqual(given.to_json(), expected)
+        with self.app.test_request_context():        
+            given = (Screenshot(id=1, 
+                source_url="source_url", 
+                created_on=datetime(2012, 3, 12, 15, 12, 10), 
+                desktop_view="desktop_image_name", 
+                mobile_view="mobile_image_name")).to_json()             
+            expected = {
+                "id": 1, 
+                "source_url": "source_url", 
+                "created_on": "12-03-2012 15:12:10", 
+                "desktop_view": "desktop_image_name", 
+                "mobile_view": "mobile_image_name",
+                "links": {
+                    "api": "http://localhost:5000/api/v1/screenshots/1",
+                    "gui": "http://localhost:5000/screenshots/1"
+                    }
+                }
+        self.assertEqual(given.keys(), expected.keys())
