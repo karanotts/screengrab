@@ -1,5 +1,5 @@
 .vscode/
-.env
+.env*
 .flaskenv
 *.pc
 *.pyc
