@@ -11,12 +11,10 @@ from screengrab.views.main import download_file
 
 api = Blueprint('api', __name__)
 
-@api.route('/screenshots', methods=['GET'])
-def get_screenshots():
+@api.route('/', methods=['GET'])
+def get_api():
 
-    screenshots = [screenshot.to_json() for screenshot in Screenshot.query.all()]
-
-    return render_template("screenshots.html", screenshots=screenshots)
+    return render_template("api.html")
 
 
 @api.route('/screenshots', methods=['POST'])
@@ -46,7 +44,11 @@ def get_screenshot(id):
     return render_template("screenshot.html", screenshot=screenshot.to_json(), preview=preview)
 
 
-@api.route('/', methods=['GET'])
-def get_api():
+@api.route('/screenshots', methods=['GET'])
+def get_screenshots():
 
-    return render_template("api.html")
+    screenshots = db.session.query(Screenshot).order_by(Screenshot.created_on.desc())
+
+    screenshots = [screenshot.to_json() for screenshot in screenshots]
+
+    return render_template("screenshots.html", screenshots=screenshots)
