@@ -6,5 +6,8 @@ services:
 before_install:
   - docker build -t karanotts/screengrab -f Dockerfile .
 
+install:
+  - pip install flask
+
 script: 
   - python -m unittest
