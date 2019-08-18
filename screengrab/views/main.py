@@ -72,3 +72,12 @@ def upload_screenshot():
         return render_template('request.html', desktop=desktop, mobile=mobile)
     
     return render_template('index.html')
+
+@main.route('/screenshots/<int:id>', methods=['GET'])
+def get_screenshot(id):
+
+    screenshot = Screenshot.query.get_or_404(id)
+    desktop = screenshot.desktop_view
+    mobile = screenshot.mobile_view
+
+    return render_template("screenshot.html", screenshot=screenshot.to_json(), desktop=desktop, mobile=mobile)

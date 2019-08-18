@@ -39,9 +39,9 @@ def post_screenshots():
 def get_screenshot(id):
 
     screenshot = Screenshot.query.get_or_404(id)
-    preview = screenshot.desktop_view
+    screenshot = json.dumps(screenshot.to_json())
 
-    return render_template("screenshot.html", screenshot=screenshot.to_json(), preview=preview)
+    return screenshot, 200
 
 
 @api.route('/screenshots', methods=['GET'])
@@ -49,6 +49,6 @@ def get_screenshots():
 
     screenshots = db.session.query(Screenshot).order_by(Screenshot.created_on.desc())
 
-    screenshots = [screenshot.to_json() for screenshot in screenshots]
+    screenshots = json.dumps([screenshot.to_json() for screenshot in screenshots])
 
-    return render_template("screenshots.html", screenshots=screenshots)
+    return screenshots, 200

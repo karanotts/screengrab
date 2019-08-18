@@ -13,8 +13,7 @@
                     <input class="" type="text" name="source_url" placeholder="Source url" size="50%"
                         pattern="^(http|https):\/\/[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+$"
                         title="http://example.com | https://www.example.co.uk" required>
-                    <button style="margin: 1rem 0 1rem 0" type="submit"
-                        class="btn btn-secondary btn-sm mt-0">Submit</button>
+                    <button type="submit" class="btn btn-secondary btn-sm mt-0">Submit</button>
                 </div>
             </form>
         </div>
@@ -26,11 +25,10 @@
 
         <div class="col-md-12" style="margin-top:30px">
             <div class="row">
-              <div class="col-md-7 content-center" >
+              <div class="col-md-8 content-center" >
                 <h4>Desktop view:</h4>
                 <div class=""><img src="{{ url_for('static', filename='uploads/' + desktop) }}" class="img-responsive" width="100%" alt="Screenshot"></div>
               </div>
-              <div class="col-md-1"></div>
               <div class="col-md-4 content-center">
               <h4>Mobile view:</h4>
                 <div class=""><img src="{{ url_for('static', filename='uploads/' + mobile) }}" class="img-responsive" width="100%" alt="Screenshot"></div>
