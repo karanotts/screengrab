@@ -71,3 +71,8 @@ def custom_query():
 
     print("Query results:" , db_query)
 ```
+
+# TODO
+- work on mobile view, it's not responsive at the moment
+- modify tests to dev to pass Travis tests
+- set up Travis > Elasticbeanstalk pipeline
