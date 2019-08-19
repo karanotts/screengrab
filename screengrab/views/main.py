@@ -7,6 +7,8 @@ from datetime import datetime
 from screengrab.extensions import db
 from screengrab.models import Screenshot
 
+main = Blueprint('main', __name__)
+
 def download_file(source_url):
 
     def save_binary_file(url, image_name):
@@ -14,7 +16,7 @@ def download_file(source_url):
         view.write(requests.get(url).content)
         view.close()
 
-    uploads = '../static/uploads'
+    uploads = current_app.config['UPLOAD_FOLDER']
     
     thum_url = 'https://image.thum.io/get/wait/15/png/'
 
@@ -42,8 +44,6 @@ def download_file(source_url):
     flash(message)
 
     return True
-
-main = Blueprint('main', __name__)
 
 @main.route('/', methods=['GET', 'POST'])
 def upload_screenshot():

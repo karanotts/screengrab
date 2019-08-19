@@ -10,10 +10,9 @@ from .views.main import main
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 def create_app():
-    app = Flask(__name__, instance_path='/')
+    app = Flask(__name__)
 
     app.config.from_object('config.Config')
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
 
     db.init_app(app)
 
