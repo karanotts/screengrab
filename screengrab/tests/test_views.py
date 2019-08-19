@@ -45,14 +45,14 @@ class FlaskViewsTest(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue('mobile_image_name' in response.get_data(as_text=True))
 
-        # response = self.client.post(
-        #     '/api/v1/screenshots',
-        #     content_type='application/json',
-        #     data=json.dumps({'source_url': 'https://wiggle.co.uk'}))
-        # self.assertEqual(response.status_code, 201)
+        response = self.client.post(
+            '/api/v1/screenshots',
+            content_type='application/json',
+            data=json.dumps({'source_url': 'https://wiggle.co.uk'}))
+        self.assertEqual(response.status_code, 201)
 
-        # response = self.client.post(
-        #     '/api/v1/screenshots',
-        #     content_type='application/json',
-        #     data=json.dumps({'source_url': 'https://malformed-url'}))
-        # self.assertEqual(response.status_code, 500)
+        response = self.client.post(
+            '/api/v1/screenshots',
+            content_type='application/json',
+            data=json.dumps({'source_url': 'https://malformed-url'}))
+        self.assertEqual(response.status_code, 500)
