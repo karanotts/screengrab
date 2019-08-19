@@ -10,3 +10,4 @@
 */static/uploads/*
 */tests/test.db
 data.db
+.travis.yml
