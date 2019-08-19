@@ -8,4 +8,4 @@ class Config:
         'sqlite:///' + os.path.join(basedir, 'data.db')
     SECRET_KEY = os.environ.get('SECRET_KEY')
     THUN_AUTH = os.environ.get('THUN_AUTH')
-    UPLOAD_FOLDER = os.path.join(basedir, 'uploads/')
+    UPLOAD_FOLDER = os.path.join(basedir, 'screengrab/static/uploads/')

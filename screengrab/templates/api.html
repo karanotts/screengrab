@@ -3,21 +3,51 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10">
-            <h2 class="my-4">SCREENGRAB API
+            <h2 class="my-4 text-center">SCREENGRAB API
             </h2>
-            <div class="card mb-2">
-                <div class="card-body">
+            <div class="row">
+                <div class="">
                     <h4 class="card-title">API USAGE</h4>
-                    <p class="card-text" style="text-align: left">
-                        <ul>
-                            <li>GET    /api/v1/screenshots</li>
-                            <li>POST   /api/v1/screenshots data={"source_url": "https://example.com"}</li>
-                            <li>GET    /api/v1/screenshots/&lt;id&gt;</li>
-                        </ul>    
+                    <p>
+                        The API allows users to save a screenshot of a web page, retrieve a list of saved screenshots
+                        and request a screenshot by id.<br />
                     </p>
+                    <p>
+                        There is currently no authentication required to use API. <br />
+                    </p>
+                    <div class="card">
+                        <div class="card-header"><span class="text-warning">POST</span> http://localhost/api/v1/screenshots</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Add screenshot to database.</h5>
+                            <p class="card-text">Example Request<br \></p>
+                            <p class="robo">curl --request POST "http://localhost/api/v1/screenshots" \<br \>
+                                --header "Content-Type: application/json" \<br \>
+                                --data "{\"source_url\": \"https://wiggle.co.uk\"}"</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><span class="text-success">GET</span> http://localhost/api/v1/screenshots</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Gets a list of all submitted screenshots, in order by last created.
+                            </h5>
+                            <p class="card-text">Example Request<br \></p>
+                            <p class="robo">curl --request GET "http://localhost/api/v1/screenshots" \<br \>
+                                --header "Content-Type: application/json"</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><span class="text-success">GET</span> http://localhost/api/v1/screenshots/&lt;id&gt;</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Get infro about a screenshot from database.</h5>
+                            <p class="card-text">Example Request<br \></p>
+                            <p class="robo">curl --location --request GET "http://localhost/api/v1/screenshots/1" \<br \>
+                                --header "Content-Type: application/json" </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}

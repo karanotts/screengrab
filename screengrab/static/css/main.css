@@ -1,0 +1,20 @@
+body {
+  padding-top: 56px;
+}
+
+.content-center {
+  text-align: center;
+}
+
+.preview {
+  width: 40%;
+  margin: auto;
+}
+
+.card {
+  margin-bottom: 10px;
+}
+
+.robo {
+  font-family: Monospace!important;
+}
