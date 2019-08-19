@@ -14,7 +14,7 @@ def download_file(source_url):
         view.write(requests.get(url).content)
         view.close()
 
-    uploads = current_app.config['UPLOAD_FOLDER']
+    uploads = '../static/uploads'
     
     thum_url = 'https://image.thum.io/get/wait/15/png/'
 
