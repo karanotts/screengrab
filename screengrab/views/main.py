@@ -17,6 +17,8 @@ def download_file(source_url):
         view.close()
 
     uploads = current_app.config['UPLOAD_FOLDER']
+    if not os.path.isdir(uploads):
+        os.mkdir(uploads)
     
     thum_url = 'https://image.thum.io/get/wait/15/png/'
 
